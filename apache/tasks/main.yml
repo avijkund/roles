@@ -1,0 +1,43 @@
+---
+# tasks file for apache
+- name: Intalling httpd and firewalld
+  yum:
+    name: 
+      - httpd
+      - firewalld
+    state: latest
+
+- name: Start and enable httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: true
+
+
+- name: Start and enable firewalld service
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
+- name: Allow http service from firewall
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true
+
+
+- name: Allow http service from firewall
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true
+
+- name: Deploy content file using jinja2 template
+  template:
+    src: web.j2
+    dest: /var/www/html/index.html
+  notify: restart web service
+
