@@ -1,1 +1,11 @@
+---
+- name: web server deployment using ansible
+  hosts: web
+  tasks:
 
+    - name: installing httpd service
+      yum:
+        name: httpd
+        state: latest
+
+   
