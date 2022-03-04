@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
+pool: default
+container: ubuntu:latest
 
 steps:
 - script: echo Hello, world!
