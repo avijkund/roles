@@ -11,10 +11,10 @@ container: localhost:5000/docker
 
 steps:
 - script: |
-    docker build .
+    docker build . -t myapp
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    docker run -d -p 8080:80 myapp
+    curl http://localhost:8080
   displayName: 'Run a multi-line script'
