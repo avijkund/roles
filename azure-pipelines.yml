@@ -15,6 +15,6 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    docker run -d -p 8080:80 myapp
-    curl http://localhost:8080
+    docker run -d -p 9001:80 myapp
+    curl http://localhost:9001
   displayName: 'Run a multi-line script'
