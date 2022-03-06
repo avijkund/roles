@@ -10,7 +10,7 @@ pool: default
 container: ubuntu:latest
 
 steps:
-- script: echo Hello, world!
+- script: ping -c 4 google.com
   displayName: 'Run a one-line script'
 
 - script: |
