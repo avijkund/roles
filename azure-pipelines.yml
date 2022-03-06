@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool: default
-container: a3831402cd41
+container: localhost:5000/docker
 
 steps:
 - script: |
