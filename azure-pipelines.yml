@@ -7,11 +7,11 @@ trigger:
 - master
 
 pool: default
-container: ubuntu:latest
+container: docker:latest
 
 steps:
 - script: |
-    cat name.txt
+    docker build -t sample_dockerfile
   displayName: 'Run a one-line script'
 
 - script: |
