@@ -15,5 +15,11 @@ steps:
   displayName: 'docker image build'
 
 - script: |
-    docker run -d -p 9001:8080 myapp
+    docker run -d --name test -p 9001:8080 myapp
   displayName: 'Run and test docker image'
+
+- script: |
+    docker stop test
+    docker rm test
+    docker rmi myapp
+  displayName: 'cleanup'
