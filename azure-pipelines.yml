@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool: default
-container: localhost:5000/docker
+container: ansible:5000/docker
 
 steps:
 - script: |
