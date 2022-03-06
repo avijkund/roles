@@ -11,7 +11,7 @@ container: localhost:5000/docker
 
 steps:
 - script: |
-    docker build -t sample_dockerfile
+    docker build .
   displayName: 'Run a one-line script'
 
 - script: |
