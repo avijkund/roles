@@ -12,9 +12,9 @@ container: localhost:5000/docker
 steps:
 - script: |
     docker build . -t myapp
-  displayName: 'Run a one-line script'
+  displayName: 'docker image build'
 
 - script: |
-    docker run -d -p 9001:80 myapp
-    docker ps -a
-  displayName: 'Run a multi-line script'
+    docker run -d -p 9001:8080 myapp
+    curl http://localhost:9001
+  displayName: 'Run and test docker image'
