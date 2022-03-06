@@ -16,5 +16,5 @@ steps:
 
 - script: |
     docker run -d -p 9001:80 myapp
-    curl http://localhost:9001
+    docker ps -a
   displayName: 'Run a multi-line script'
