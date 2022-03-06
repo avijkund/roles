@@ -16,5 +16,4 @@ steps:
 
 - script: |
     docker run -d -p 9001:8080 myapp
-    curl http://localhost:9001
   displayName: 'Run and test docker image'
