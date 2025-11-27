@@ -11,7 +11,7 @@ container: localhost:5000/docker
 
 steps:
 - script: |
-    docker build . -t myapp
+    docker build . -t myapp:latest
   displayName: 'docker image build'
 
 - script: |
@@ -19,7 +19,19 @@ steps:
   displayName: 'Run and test docker image'
 
 - script: |
-    docker stop test
-    docker rm test
-    docker rmi myapp httpd
+    echo "Running Trivy Scan..."
+    docker run --rm \
+      -v $(System.DefaultWorkingDirectory):/root/.cache/ \
+      -v $(System.DefaultWorkingDirectory):/scan \
+      aquasec/trivy image \
+      --format sarif \
+      --output /scan/trivy-report.sarif \
+      --severity HIGH,CRITICAL \
+      myapp:latest
   displayName: 'cleanup'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/trivy-report.sarif'
+    ArtifactName: 'trivy-report'
+  displayName: "Publish Trivy Report"
