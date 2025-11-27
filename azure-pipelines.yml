@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool: default
-container: localhost:5000/docker
+pool:
+  vmImage: 'ubuntu-latest'
 
 steps:
 - script: |
